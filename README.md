@@ -163,11 +163,11 @@ NB: requires internet connection to download dependencies
 
 
 ## Offline Maven Build
-**1**
+**Offline Build Method 1**
 - `mvn dependency:go-offline` command will download everything that your project depends on and will make sure that on a later build, nothing will be downloaded. Then, you can simply make a ZIP of {user.home}/.m2/repository.     
 - unzip inside offline machine {user.home}/.m2/repository (will be able to build the project)
 
-**2**     
+**Offline Build Method 2**     
 - Get the dependency.jar from "Single Assembly Build" described above    
 - Maven command to deploy to offline machine: `mvn install:install-file -Dfile=<path-to-file>`
 
