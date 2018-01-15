@@ -155,7 +155,7 @@ Edit Pom:
 ```
 **Create Run Configuration**
 Name: Pack As Single Assembly    
-Goals: `package assembly:single`    
+Goals: `package assembly:single`     
 
 Run (Maven will create two jars - app.jar & depedency.jar)
 
