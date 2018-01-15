@@ -1,12 +1,8 @@
-# springboot-webmvc
+## Generate Project
+Go to: [start.spring.io](http://start.spring.io/) and Generate Project
+
+## Maven pom.xml
 ```
-
-Go to: start.spring.io
-Generate Project
-
-
-
-
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -72,10 +68,10 @@ Generate Project
 
 
 </project>
+```
 
-
-
-
+## Application Class
+```
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -89,19 +85,20 @@ public class Application {
 		//System.out.println("Spring Boot Web MVC Started...");
 	}
 }
+```
 
-
-
-src/main/resources > application.properties
-
+## application.properties
+Go to: src/main/resources > application.properties   
+Add:
+```
 spring.mvc.view.prefix=/WEB-INF/views/
 spring.mvc.view.suffix=.jsp
+```
 
-
-
-Create controller package
-Create controller
-
+## Controller
+- Create controller package   
+- Create controller
+```
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -120,19 +117,17 @@ public class TestController {
 		return "test";
 	}
 }
-
-
-Create Run Configuration
-
-Name: Mvn Spring Boot Run
-Goals: spring-boot:run
-
-Alternative:
-Right click on project > Run As > Spring Boot App
-
-cleaning
-Name: Mvn Clean 
-Goals: clean
-
-
 ```
+
+## Run Configuration
+**Create Run Configuration:**  
+Name: Mvn Spring Boot Run    
+Goals: spring-boot:run    
+
+Alternative:    
+Right click on project > Run As > Spring Boot App    
+
+**Cleaning**   
+Name: Mvn Clean     
+Goals: clean    
+
