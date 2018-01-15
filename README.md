@@ -153,7 +153,7 @@ Edit Pom:
   </plugins>
 </build>
 ```
-**Create Run Configuration**
+**Create Run Configuration**    
 Name: Pack As Single Assembly    
 Goals: `package assembly:single`     
 
