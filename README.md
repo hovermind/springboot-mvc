@@ -131,3 +131,37 @@ Right click on project > Run As > Spring Boot App
 Name: Mvn Clean     
 Goals: clean    
 
+
+## Single Assembly Build
+```
+Edit Pom:    
+ <build>
+  <plugins>
+    <plugin>
+      <artifactId>maven-assembly-plugin</artifactId>
+      <configuration>
+        <archive>
+          <manifest>
+            <mainClass>com.thanga.MyTest[REPLACE WITH YOUR MAIN CLASS]</mainClass>
+          </manifest>
+        </archive>
+        <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
+```
+**Create Run Configuration**
+Name: Pack As Single Assembly    
+Goals: `package assembly:single`    
+
+Run (Maven will create two jars - app.jar & depedency.jar)
+
+NB: requires internet connection to download dependencies
+
+
+
+
+
