@@ -193,13 +193,14 @@ Add `spring-boot-devtools` dependency
 <dependency>
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-devtools</artifactId>
+	<optional>true</optional>
 </dependency>
 ```
 Open `application.properties` set thymeleaf cache to false    
 ```
 spring.thymeleaf.cache= false
 ```
-
+(DevTools Details)[https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html]
 
 
 
