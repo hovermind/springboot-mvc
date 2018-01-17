@@ -142,7 +142,7 @@ Edit Pom:
       <configuration>
         <archive>
           <manifest>
-            <mainClass>com.thanga.MyTest[REPLACE WITH YOUR MAIN CLASS]</mainClass>
+            <mainClass>com.thanga.[REPLACE WITH YOUR MAIN CLASS]</mainClass>
           </manifest>
         </archive>
         <descriptorRefs>
@@ -172,8 +172,20 @@ NB: requires internet connection to download dependencies
 - Maven command to deploy to offline machine: `mvn install:install-file -Dfile=<path-to-file>`
 
 
-
-
+## Thymeleaf instead of JSP
+To use thymeleaf template engine instead of JSP & JSLT, add dependency
+```
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
+```
+By default thymeleaf will look in `src/main/resources/templates` with `.html` files    
+You can change default configuration in `application.properties`     
+```
+spring.thymeleaf.presfix= /WEB-INF/views/
+pring.thymeleaf.suffix= .html
+```
 
 
 
