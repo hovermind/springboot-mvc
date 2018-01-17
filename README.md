@@ -200,7 +200,7 @@ Open `application.properties` set thymeleaf cache to false
 ```
 spring.thymeleaf.cache= false
 ```
-(DevTools Details)[https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html]
+[DevTools Details](https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html)
 
 
 
