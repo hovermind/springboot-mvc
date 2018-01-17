@@ -187,7 +187,18 @@ spring.thymeleaf.presfix= /WEB-INF/views/
 pring.thymeleaf.suffix= .html
 ```
 
-
+## Hot Swapping / Reloading    
+Add `spring-boot-devtools` dependency    
+```
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-devtools</artifactId>
+</dependency>
+```
+Open `application.properties` set thymeleaf cache to false    
+```
+spring.thymeleaf.cache= false
+```
 
 
 
