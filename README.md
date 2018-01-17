@@ -173,6 +173,19 @@ NB: requires internet connection to download dependencies
 
 
 ## Thymeleaf instead of JSP
+Remove following from `application.properties`    
+```
+spring.mvc.view.prefix=/WEB-INF/views/
+spring.mvc.view.suffix=.jsp
+```
+Jasper dependency is also not needed
+```
+<dependency>
+	<groupId>org.apache.tomcat.embed</groupId>
+	<artifactId>tomcat-embed-jasper</artifactId>
+	<scope>provided</scope>
+</dependency>
+```
 To use thymeleaf template engine instead of JSP & JSLT, add dependency
 ```
 <dependency>
