@@ -24,7 +24,7 @@
 <body>
 
 	<div id="top_bar" class="navbar navbar-default navbar-fixed-top" style="margin: 0px">
-    					<h2 class="text-center" th:text="${'Management Console - ' + pageTitle}" style="margin: 0px; padding: 10px;"> </h2>
+    					<h2 class="text-center" th:text="${'Spring - ' + pageTitle}" style="margin: 0px; padding: 10px;"> </h2>
 	</div>
 	
 	<div class="container">
