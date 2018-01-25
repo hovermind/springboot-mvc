@@ -216,5 +216,6 @@ spring.thymeleaf.cache= false
 [DevTools Details](https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html)
 
 
-
+## Thymeleaf master page    
+Master page is: [Here](https://github.com/hovermind/springboot-webmvc/blob/master/master_page.md)
 
