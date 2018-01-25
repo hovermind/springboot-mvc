@@ -303,3 +303,18 @@ body {
 }
 
 ```
+## Css for fixed top bar
+```
+#top_bar.navbar-fixed-top{
+	//paddingt: 10px;
+	background-color: #5555FF
+}
+
+#top_bar.navbar-fixed-top h2{
+	color: #FFF;
+}
+
+#page_main_content{
+	padding: 10px;
+}
+```
