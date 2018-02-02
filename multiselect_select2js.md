@@ -1,4 +1,4 @@
-
+```
 
 <form th:object="${form_model}" class="form" th:action="@{/end_point}" method="post" id="filter_form">
 
@@ -22,13 +22,10 @@
 	</div>
 
 </form>
+```
 
-
-
-
-
-filter_form.js
-
+## filter_form.js
+```
 $filter_form = $('#filter_form');
 $multi_select_1 = $('#multi_select_1');
 $multi_select_2 = $('#multi_select_2');
@@ -95,3 +92,4 @@ $(document).ready(function() {
 
 	});
 });
+```
