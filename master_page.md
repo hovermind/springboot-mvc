@@ -73,13 +73,13 @@
 	</div>
 
 	<script>
-		// custom js for multi-select	
+		// custom js for collapsible menu
 	</script>
 	
 </body>
 </html>
 ```
-## [Collapsible menu](#)
+## [Collapsible menu](https://github.com/hovermind/springboot-webmvc/blob/master/collapsible_menu.md)
 
 ## [Multiselect by select2.js](https://github.com/hovermind/springboot-webmvc/blob/master/multiselect_select2js.md)
 
