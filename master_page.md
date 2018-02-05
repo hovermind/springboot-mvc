@@ -73,42 +73,7 @@
 	</div>
 
 	<script>
-	
-	
-		var isRight = false;
-		
-		function toggleDirection(){
-			
-			if(isRight){
-				
-				isRight = false;
-				
-			}else{
-				
-				isRight = true;
-				
-			}
-		}
-	
-		$("#menu-toggle").click(function(e) {
-			
-			e.preventDefault();
-			
-			toggleDirection();
-			
-			$("#wrapper").toggleClass("toggled");
-			
-			if(isRight){
-				$("#arrow_icon").toggleClass("fa-chevron-left fa-chevron-right")
-			}else{
-				$("#arrow_icon").toggleClass("fa-chevron-right fa-chevron-left")
-			}
-		
-		});
-		
-
-
-		
+		// custom js for multi-select	
 	</script>
 	
 </body>
