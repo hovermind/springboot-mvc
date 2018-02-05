@@ -6,7 +6,7 @@
 Dependency : JQuery, Bootstrap     
 
 [Github: sidr](https://github.com/artberri/sidr)    
-[Doc: sidr](https://www.berriart.com/sidr/)    
+[Site: sidr](https://www.berriart.com/sidr/)    
 
 Custom JavaScript
 ```
