@@ -217,5 +217,12 @@ spring.thymeleaf.cache= false
 
 
 ## Thymeleaf master page    
-Master page is: [Here](https://github.com/hovermind/springboot-webmvc/blob/master/master_page.md)
+Master page is: [Here](https://github.com/hovermind/springboot-webmvc/blob/master/master_page.md)    
+
+## Setting & getting value from session    
+Getset value in session : [here](https://github.com/hovermind/springboot-webmvc/blob/master/getset_value_in_session)      
+
+
+
+
 
