@@ -3,7 +3,7 @@
 
 ## Collapsible Menu
 
-Dependency : JQuery, Bootstrap     
+Dependency : JQuery, Bootstrap & Font Awesome     
 
 Download js & css:   
 [Github: sidr](https://github.com/artberri/sidr)    
