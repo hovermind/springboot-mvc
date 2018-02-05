@@ -220,7 +220,7 @@ spring.thymeleaf.cache= false
 
 ## [Model binding](https://github.com/hovermind/springboot-webmvc/blob/master/thymeleaf_model_binding.md)
 
-## [Getting & setting session value](https://github.com/hovermind/springboot-webmvc/blob/master/getset_value_in_session)  
+## [Getting & setting session value](https://github.com/hovermind/springboot-webmvc/blob/master/getting_setting_session_value.md)  
 
 
 
