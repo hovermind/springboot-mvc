@@ -1,7 +1,5 @@
-## Multiselect by select2.js
-
-[site](https://select2.org/)    
-
+## Multiselect by [select2.js](https://select2.org/)
+Download js & css from [select2.org](https://select2.org/)    
 
 Custom JS
 ```
