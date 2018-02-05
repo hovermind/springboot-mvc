@@ -5,6 +5,7 @@
 
 Dependency : JQuery, Bootstrap     
 
+Download js & css:   
 [Github: sidr](https://github.com/artberri/sidr)    
 [Site: sidr](https://www.berriart.com/sidr/)    
 
