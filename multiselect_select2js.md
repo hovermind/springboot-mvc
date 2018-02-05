@@ -1,53 +1,27 @@
+## Multiselect by select2.js
+
+[site](https://select2.org/)    
+
+
+Custom JS
 ```
+function submit_form(selectFlag) {
 
-<form th:object="${form_model}" class="form" th:action="@{/end_point}" method="post" id="filter_form">
-
-	<div class="selecter">
-
-		<select th:field="*{form_model_field_1}" id="multi_select_1" multiple>
-		
-			<option th:each="ms1 : ${multi_select_1_list}" th:value="${ms1}" th:text="${ms1}"></option>
-
-		</select> 
-		
-		
-		<select th:field="*{form_model_field_2}" id="multi_select_2" multiple>
-		
-			<option th:each="ms2 : ${multi_select_2_list}" th:value="${ms2}" th:text="${ms2}"></option>
-			
-		</select> 
-		
-		<input id="btn_clear" class="btn btn-success" type="button" value="Clear">
-
-	</div>
-
-</form>
-```
-
-## filter_form.js
-```
-$filter_form = $('#filter_form');
-$multi_select_1 = $('#multi_select_1');
-$multi_select_2 = $('#multi_select_2');
-$btn_clear = $("#btn_clear");
-
-function submit_filter_form() {
-
-	$filter_form.submit();
+	$('#filter_form').submit();
 }
 
-$multi_select_1.select2({
+$('#a_multiselect').select2({
 
-	placeholder : 'Select multi_select_1',
+	placeholder : 'Select a_multiselect',
 	allowClear : true,
 	closeOnSelect : true,
 	multiple : true,
 	width : '40%',
 })
 
-$multi_select_2.select2({
+$('#b_multiselect').select2({
 
-	placeholder : 'Select multi_select_2',
+	placeholder : 'Select b_multiselect',
 	allowClear : true,
 	closeOnSelect : true,
 	multiple : true,
@@ -55,41 +29,52 @@ $multi_select_2.select2({
 });
 
 $(document).ready(function() {
+	
+	$aMultiselect = $('#a_multiselect');
+	$bMultiselect = $('#b_multiselect');
+	$btnClear = $("#btn_clear");
 
-	/* listen for select / deselect events */
-	$multi_select_1.on('change.select2', function(e) {
+	/* listen for select / deselect event */
+	$aMultiselect.on('change.select2', function(e) {
 
 		e.preventDefault();
 
 		// console.log(e.params);
 
-		submit_filter_form();
+		submit_form('a'); 
 	});
 
-	$multi_select_2.on('change.select2', function(e) {
+	$bMultiselect.on('change.select2', function(e) {
 
 		e.preventDefault();
 
 		// console.log(e.params);
 
-		submit_filter_form();
+		submit_form('b'); 
 
 	});
-	
-	
 
 	// clear button
-	
-	$btn_clear.on("click", function(e) {
+	$btnClear.on("click", function(e) {
 
 		e.preventDefault();
+		
+		$a = $('#a_multiselect');
+		$b = $('#b_multiselect');
+		
+		$a_array = $a.val();
+		$b_array = $b.val();
+		if(($a_array == null &&  $b_array == null) || !($a_array.length > 0  || $b_array.length > 0)){
+			return; // nothing to clear
+		}
 
 		//console.log('btn_clear');
 
-		$multi_select_1.val(null).trigger('change.select2');
+		$a.val(null).trigger('change.select2');
 
-		$multi_select_2.val(null).trigger('change.select2');
+		$b.val(null).trigger('change.select2');
 
 	});
+	
 });
 ```
