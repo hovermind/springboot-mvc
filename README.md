@@ -224,5 +224,5 @@ spring.thymeleaf.cache= false
 
 ## [Handling Exception using Controller Advice](https://github.com/hovermind/springboot-webmvc/blob/master/controller_advice.md)
 
-
+## [Ajax Call](https://github.com/hovermind/springboot-webmvc/blob/master/ajax_call.md)
 
