@@ -222,7 +222,7 @@ spring.thymeleaf.cache= false
 
 ## [Getting & setting session value](https://github.com/hovermind/springboot-webmvc/blob/master/getting_setting_session_value.md)  
 
-
+## [Handling Exception using Controller Advice](https://github.com/hovermind/springboot-webmvc/blob/master/controller_advice.md)
 
 
 
