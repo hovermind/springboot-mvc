@@ -1,5 +1,5 @@
 ## Create Controller Advice
-MyControllerAdvice.java (see [Custom Exception Classes](#))
+MyControllerAdvice.java (see [Custom Exception Classes](https://github.com/hovermind/springboot-webmvc/blob/master/controller_advice.md#custom-exception-classes))
 ```
 @ControllerAdvice
 public class MyControllerAdvice {
