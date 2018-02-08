@@ -11,8 +11,8 @@ application_dev.properties
 application_stage.properties
 application_production.properties
 ```
-`application.properties` is main & will always be loaded.    
-Profile specific configuration properties will override `application.properties`    
+ - `application.properties` is main & will always be loaded.    
+ - Profile specific configuration properties will override `application.properties`    
 
 **To set active profile** open `application.properties` & add:
 ```
@@ -104,7 +104,7 @@ public class MyService{ // or Component/Repository
 ```
 myprefix.salt= $#-{0}-222-{1}
 ```
-{0} & {1} will be replaced by PlaceHolderValues
+`{0}` & `{1}` will be replaced by PlaceHolderValues
 ```
 	@Autowired
 	private MessageSource messageSource;
@@ -114,6 +114,6 @@ myprefix.salt= $#-{0}-222-{1}
 		return messageSource.getMessage(key, placeHolderValues, "default", Locale.JAPAN);
 	}
 ```
-If we call `getMessageWithPlaceHolder("myprefix.salt", new String[]{"my", "secret"})` then we will get "$#-my-222-secret"
+If we call `getMessageWithPlaceHolder("myprefix.salt", new String[]{"my", "secret"})` then we will get `"$#-my-222-secret"`
 
 
