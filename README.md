@@ -220,9 +220,11 @@ spring.thymeleaf.cache= false
 
 ## [Model binding](https://github.com/hovermind/springboot-webmvc/blob/master/thymeleaf_model_binding.md)
 
-## [Getting & setting session value](https://github.com/hovermind/springboot-webmvc/blob/master/getting_setting_session_value.md)  
+## [Getting & setting session value](https://github.com/hovermind/springboot-webmvc/blob/master/getting_setting_session_value.md)
 
-## [Handling Exception using Controller Advice](https://github.com/hovermind/springboot-webmvc/blob/master/controller_advice.md)
+## [Custom Error Page](https://github.com/hovermind/springboot-webmvc/blob/master/error_page.md)
+
+## [Controller Advice to Handle Exception & Error](https://github.com/hovermind/springboot-webmvc/blob/master/controller_advice.md)
 
 ## [Ajax Call](https://github.com/hovermind/springboot-webmvc/blob/master/ajax_call.md)
 
