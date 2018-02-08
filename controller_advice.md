@@ -1,6 +1,5 @@
 ## Create Controller Advice
-MyControllerAdvice.java    
-(see [Custom Exception Classes](https://github.com/hovermind/springboot-webmvc/blob/master/controller_advice.md#custom-exception-classes) & [Throwing Custom Exception from RestController](https://github.com/hovermind/springboot-webmvc/blob/master/controller_advice.md#throwing-custom-exception-from-restcontroller))
+MyControllerAdvice.java (See Below [Custom Exception Classes](https://github.com/hovermind/springboot-webmvc/blob/master/controller_advice.md#custom-exception-classes) & [Throwing Custom Exception from RestController](https://github.com/hovermind/springboot-webmvc/blob/master/controller_advice.md#throwing-custom-exception-from-restcontroller))
 ```
 @ControllerAdvice
 public class MyControllerAdvice {
