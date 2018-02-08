@@ -63,7 +63,7 @@ public class MyControllerAdvice {
 	}
 }
 ```
-## Exceptions to Handle in Controller Advice
+## Exception Classes
 ```
 public class ApiCallException extends Exception {
 
@@ -137,12 +137,12 @@ public class TestController {
 			}
 
 			// api call is ok but status code != 200
-			return ResponseEntity.status(tResp.getCode()).body(tResp.getMessage());
+			throw new CommonControllerException(e.getMessage());
 
 		} catch (Exception e) {
 
-			// DB related exception
-			throw new CustomException(e.getMessage());
+			// API call related exception
+			throw new ApiCallException(e.getMessage());
 		}
 
 	}
