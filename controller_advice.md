@@ -1,4 +1,5 @@
-## MyControllerAdvice.java
+## Create Controller Advice
+MyControllerAdvice.java (see [Custom Exception Classes](#))
 ```
 @ControllerAdvice
 public class MyControllerAdvice {
@@ -63,7 +64,7 @@ public class MyControllerAdvice {
 	}
 }
 ```
-## Exception Classes
+## Custom Exception Classes
 ```
 public class ApiCallException extends Exception {
 
@@ -113,7 +114,7 @@ public class CommonControllerException extends Exception {
 }
 ```
 
-## Throwing CustomException from RestController
+## Throwing Custom Exception from RestController
 ```
 @RestController
 @RequestMapping("api/v1")
