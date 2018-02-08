@@ -11,7 +11,8 @@ application_dev.properties
 application_stage.properties
 application_production.properties
 ```
-`application.properties` is main & will always be loaded. Profile specific configuration properties will override `application.properties`    
+`application.properties` is main & will always be loaded.    
+Profile specific configuration properties will override `application.properties`    
 
 **To set active profile** open `application.properties` & add:
 ```
