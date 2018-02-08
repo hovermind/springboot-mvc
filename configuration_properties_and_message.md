@@ -1,7 +1,9 @@
 ## Configuration Properties and Messages
-Convention over configuration - put `application.properties` & `message.properties` in resource folder & it will work    
-`application.properties` : related to configuration    
-`message.properties` : related to i18n messages/texts/String literals (localization)    
+Convention over configuration - put `application.properties` & `message.properties` in resource folder & it will work   
+
+
+`application.properties` : **related to configuration**    
+`message.properties` : **related to i18n messages/texts/String literals (localization)**    
 
 profile specific configuration - `application_profileName.properties` i.e.
 ```
@@ -96,7 +98,7 @@ public class MyService{ // or Component/Repository
 	}
 }
 ```
-**PlaceHolderValues in Message**
+**PlaceHolderValues in Message**    
 `message.properties`
 ```
 myprefix.salt= $#-{0}-222-{1}
