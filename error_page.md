@@ -33,4 +33,4 @@ server.error.whitelabel.enabled= false
 </html> 
 ```
 
-## See [MyControllerAdvice to handle Exception & Internal server error](https://github.com/hovermind/springboot-webmvc/blob/master/controller_advice.md)
+## See [Controller Advice to Handle Exception & Error](https://github.com/hovermind/springboot-webmvc/blob/master/controller_advice.md)
