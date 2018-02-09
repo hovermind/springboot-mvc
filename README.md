@@ -229,3 +229,5 @@ spring.thymeleaf.cache= false
 ## [Ajax Call](https://github.com/hovermind/springboot-webmvc/blob/master/ajax_call.md)
 
 ## [Configuration Properties and Message](https://github.com/hovermind/springboot-webmvc/blob/master/configuration_properties_and_message.md)
+
+## [Logging with SLF4J and Logback](https://github.com/hovermind/springboot-webmvc/blob/master/logging.md)
