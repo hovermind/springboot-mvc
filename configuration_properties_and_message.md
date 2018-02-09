@@ -5,11 +5,11 @@ Convention over configuration - put `application.properties` & `message.properti
 `application.properties` : **related to configuration**    
 `message.properties` : **related to i18n messages/texts/String literals (localization)**    
 
-profile specific configuration - `application_profileName.properties` i.e.
+profile specific configuration - `application-{profileName}.properties` i.e.
 ```
-application_dev.properties
-application_stage.properties
-application_production.properties
+application-dev.properties
+application-stage.properties
+application-production.properties
 ```
  - `application.properties` is main & will always be loaded.    
  - Profile specific configuration properties will override `application.properties`    
