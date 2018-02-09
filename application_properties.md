@@ -1,7 +1,7 @@
 ## apllication.properties
 
 ```
-spring.messages.basename= messages, server_base_uri
+spring.messages.basename= messages, othername_message
 
 spring.mvc.servlet.load-on-startup= 1
 
@@ -26,7 +26,7 @@ server.error.whitelabel.enabled= false
 spring.profiles.active= dev
 
 # logging
-mc.log.folder= C:/management_console_log
+myprefix.log.folder= C:/management_console_log
 #logging.level.root= warn
 logging.level.org.springframework= error
 logging.level.com.hovermind= debug
