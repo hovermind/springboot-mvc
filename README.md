@@ -171,6 +171,7 @@ NB: requires internet connection to download dependencies
 - Get the dependency.jar from "Single Assembly Build" described above    
 - Maven command to deploy to offline machine: `mvn install:install-file -Dfile=<path-to-file>`
 
+**[Local Repo](https://gist.github.com/timmolderez/92bea7cc90201cd3273a07cf21d119eb)**
 
 ## Thymeleaf instead of JSP
 Remove following from `application.properties`    
