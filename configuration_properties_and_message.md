@@ -33,47 +33,7 @@ spring.messages.basename= messages, server_base_uri
 ```
 
 ## Using Configuration Properties
-`application.properties`
-```
-myprefix.id= 222
 
-myprefix.flagList[0]= A
-myprefix.flagList[1]= B
-myprefix.flagList[2]= C
-
-myprefix.colorMap.red= #F00
-myprefix.colorMap.green= #0F0
-myprefix.colorMap.blue= #00F
-```
-
-**Component Class to Get Configuration Properties**
-```
-@ConfigurationProperties(prefix = "myprefix")
-@Component("customSetting")
-public class CustomSetting{
-
-	private int id;
-
-	private List<String> flagList;
-	private Map<String, String> colorMap;
-
-	// generate getter, setter
-}
-```
-
-**Using CustomSetting Component in Service**
-```
-@Service("myService")
-@Scope(BeanDefinition.SCOPE_PROTOTYPE)
-public class MyService{
-
-	@Autowired
-	CustomSetting customSetting;
-	
-	
-	// use custom setting in service methods
-}
-```
 **Setting Configuration Property Value to a Field of Component/Service/Repository**
 ```
 public class MyComponent{ // or Service/Repository
@@ -83,8 +43,9 @@ public class MyComponent{ // or Service/Repository
 	
 }
 ```
-**[More Details about Using Configuration Properties](https://github.com/hovermind/springboot-webmvc/blob/master/using_configuration_properties.md)**
-**Getting Message Using Key**
+**[More Details about Using Configuration Properties](https://github.com/hovermind/springboot-webmvc/blob/master/using_configuration_properties.md)**    
+
+## Getting Message Using Key
 ```
 public class MyService{ // or Component/Repository
 
