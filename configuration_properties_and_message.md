@@ -83,7 +83,7 @@ public class MyComponent{ // or Service/Repository
 	
 }
 ```
-
+**[More Details about Using Configuration Properties](https://github.com/hovermind/springboot-webmvc/blob/master/using_configuration_properties.md)**
 **Getting Message Using Key**
 ```
 public class MyService{ // or Component/Repository
