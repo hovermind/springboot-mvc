@@ -55,8 +55,10 @@ public class MyController {
 }
 ```
 
-In thymeleaf template use `${session. }`
+**In thymeleaf template use** `${session. }`
 ```
 <p th:text="${session.myData.message}">
 ```
-Note: don't use # with session i.e `${#sesion. }` => wrong, `#` for servlet environment variables i.e `${#httpServletRequest.requestURI}` => ok
+**Note:**    
+ - don't use `#` with `'session'` i.e `${#sesion. }` => wrong, 
+ - `#` for servlet environment variables i.e `${#httpServletRequest.requestURI}` => ok
