@@ -41,7 +41,7 @@ public class ServiceGenerator {
 
 	// no authentication & default base uri
 	public static <C> C createService(Class<C> apiClass) {
-		return createService(apiClass, "http://localhost:8080/api/v1/testserver/");
+		return createService(apiClass, "http://localhost:8080/api/test/");
 	}
 
 	public static String getOpenamAuthToken(String openamBaseUri, Map<String, String> headerMap) throws ApiCallException {
