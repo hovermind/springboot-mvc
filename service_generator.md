@@ -139,4 +139,9 @@ public class AuthToken {
 	}
 }
 ```
-
+## `AuthTokenType.java`
+```
+public enum AuthTokenType {
+	OAuthToken, Password;
+}
+```
