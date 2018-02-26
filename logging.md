@@ -25,6 +25,8 @@ To activate logback, create `logback-spring.xml` (in resource folder)
 
 	<property name="LOG_FILE" value="${LOG_FOLDER}/my_log_file_name.log" />
 
+	<property name="LOG_FILE_TOMCAT_HOME" value="${catalina.home}/my_log_file_name.log" />
+	
 	<property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{0}.%method[%line] --- %message%n" />
 
 	<springProfile name="dev">
@@ -39,7 +41,7 @@ To activate logback, create `logback-spring.xml` (in resource folder)
 				<pattern>${FILE_LOG_PATTERN}</pattern>
 			</encoder>
 
-			<file>${LOG_FILE}</file>
+			<file>${LOG_FILE or LOG_FILE_TOMCAT_HOME}</file>
 
 			<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 				<fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.log</fileNamePattern>
@@ -63,7 +65,7 @@ To activate logback, create `logback-spring.xml` (in resource folder)
 				<pattern>${FILE_LOG_PATTERN}</pattern>
 			</encoder>
 
-			<file>${LOG_FILE}</file>
+			<file>${LOG_FILE / LOG_FILE_TOMCAT_HOME}</file>
 
 			<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 
@@ -78,10 +80,16 @@ To activate logback, create `logback-spring.xml` (in resource folder)
 
 		</appender>
 
-		<root level="ERROR">
+		<root level="WARN">
 			<appender-ref ref="ROLLING-FILE" />
 		</root>
-
+		<logger name="org.springframework" level="ERROR">
+			<appender-ref ref="ROLLING-FILE" />
+		</logger>
+		
+		<logger name="com.hovermind" level="DEBUG">
+			<appender-ref ref="ROLLING-FILE" />
+		</logger>
 	</springProfile>
 
 </configuration>
