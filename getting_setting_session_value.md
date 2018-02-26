@@ -36,7 +36,7 @@ public String MyPagePOST(@ModelAttribute("my_data") Data data, Model model, MyVi
 }
 ```
 ## Using Session Variable in Thymeleaf Template   
-Set session data    
+**Set session data**    
 ```
 @Controller
 @SessionAttributes("myData")
