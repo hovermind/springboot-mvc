@@ -145,3 +145,30 @@ public enum AuthTokenType {
 	OAuthToken, Password;
 }
 ```
+## `AuthenticationInterceptor.java`
+```
+public class AuthenticationInterceptor implements Interceptor {
+
+	private String authToken;
+
+	public AuthenticationInterceptor(String authToken) {
+		this.authToken = authToken;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Response intercept(Chain chain) throws IOException {
+
+		Request original = chain.request();
+
+		Request.Builder builder = original.newBuilder().header("User-Agent", "Hovermind").header("Accept", "application/json").header("Content-Type", "application/json").method(original.method(), original.body());
+
+		Request request = builder.build();
+
+		return chain.proceed(request);
+	}
+}
+
+```
