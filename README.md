@@ -194,8 +194,8 @@ To use thymeleaf template engine instead of JSP & JSLT, add dependency
 	<artifactId>spring-boot-starter-thymeleaf</artifactId>
 </dependency>
 ```
-By default thymeleaf will look in `src/main/resources/templates` with `.html` files    
-You can change default configuration in `application.properties`     
+By default thymeleaf will look in `src/main/resources/templates` with `.html` files (jar deploy)    
+To deploy as war change default configuration in `application.properties`     
 ```
 spring.thymeleaf.presfix= /WEB-INF/views/
 pring.thymeleaf.suffix= .html
