@@ -93,3 +93,50 @@ public class ServiceGenerator {
 	}
 }
 ```
+
+## `AuthToken.java`
+```
+public class AuthToken {
+
+	private AuthTokenType tokenType;
+
+	private String authToken;
+
+	private String userIdOrName;
+
+	private String password;
+
+	public AuthTokenType getTokenType() {
+		return tokenType;
+	}
+
+	public void setTokenType(AuthTokenType tokenType) {
+		this.tokenType = tokenType;
+	}
+
+	public String getAuthToken() {
+		return authToken;
+	}
+
+	public void setAuthToken(String authToken) {
+		this.authToken = authToken;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getUserIdOrName() {
+		return userIdOrName;
+	}
+
+	public void setUserIdOrName(String userIdOrName) {
+		this.userIdOrName = userIdOrName;
+	}
+}
+```
+
