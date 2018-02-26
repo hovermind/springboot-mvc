@@ -65,7 +65,7 @@ To activate logback, create `logback-spring.xml` (in resource folder)
 				<pattern>${FILE_LOG_PATTERN}</pattern>
 			</encoder>
 
-			<file>${LOG_FILE / LOG_FILE_TOMCAT_HOME}</file>
+			<file>${LOG_FILE or LOG_FILE_TOMCAT_HOME}</file>
 
 			<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 
