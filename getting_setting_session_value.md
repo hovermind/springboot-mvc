@@ -4,7 +4,7 @@
 ```
 @Controller
 @SessionAttributes("my_data")
-public class TreasuryController {
+public class MyController {
 
 	/*
 	* will be called (once per session) before any request handler
@@ -35,3 +35,28 @@ public String MyPagePOST(@ModelAttribute("my_data") Data data, Model model, MyVi
 
 }
 ```
+## Using Session Variable in Thymeleaf Template   
+Set session data    
+```
+@Controller
+@SessionAttributes("myData")
+public class MyController {
+
+	@ModelAttribute("myData")  
+	private Data populateData() {
+
+		Data data = new Data();
+
+		// get data from repository or api call
+		// data = ...
+
+		return data;
+	}
+}
+```
+
+In thymeleaf template use `${session. }`
+```
+<p th:text="${session.myData.message}">
+```
+Note: don't use # with session i.e `${#sesion. }` => wrong, `#` for servlet environment variables i.e `${#httpServletRequest.requestURI}` => ok
