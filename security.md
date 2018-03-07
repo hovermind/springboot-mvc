@@ -128,20 +128,6 @@ public class MyUserDetailsService implements UserDetailsService {
 
 ## 
 ```
-package jp.co.softbank.security;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.authentication.dao.ReflectionSaltSource;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.access.AccessDeniedHandler;
-
-
 @Configuration
 public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -212,4 +198,41 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
 }
 
+```
+
+## MyAuthenticationSuccessHandler
+```
+@Component("MyAuthenticationSuccessHandler")
+public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHandler{
+
+	@Override
+	public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException  {
+
+        httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/home");
+	}
+
+}
+```
+
+## MyAccessDeniedHandler
+```
+// handle 403 page
+@Component("MyAccessDeniedHandler")
+public class MyAccessDeniedHandler implements AccessDeniedHandler {
+
+	private static Logger logger = LoggerFactory.getLogger(MyAccessDeniedHandler.class);
+
+	@Override
+	public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException, ServletException {
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		if (auth != null) {
+			logger.info("User '" + auth.getName() + "' attempted to access the protected URL: " + httpServletRequest.getRequestURI());
+		}
+
+		httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "error/403");
+
+	}
+}
 ```
