@@ -29,7 +29,7 @@ public interface IMyAccountRepository extends MongoRepository<MyAccount, String>
 
 ```
 
-## MyUserDetails.java for UserDetailsService
+## MyUserDetails.java
 ```
 public class MyUserDetails implements UserDetails {
 
@@ -133,7 +133,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
 ```
 
-## 
+## MySecurityConfig.java
 ```
 @Configuration
 public class MySecurityConfig extends WebSecurityConfigurerAdapter {
