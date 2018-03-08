@@ -209,17 +209,28 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
 ## MyAuthenticationSuccessHandler
 ```
-@Component("MyAuthenticationSuccessHandler")
-public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHandler{
+
+@Component("myAuthenticationSuccessHandler")
+public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+
+	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
 	@Override
-	public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException  {
+	public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
 
-        httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/home");
+		List<String> roleList = McSecurityUtil.getRolesAsStringList(authentication.getAuthorities());
+
+		String landingPage = McSecurityUtil.getLandingPage(roleList);
+
+		// httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + landingPage);
+		redirectStrategy.sendRedirect(httpServletRequest, httpServletResponse, "/" + landingPage);
 	}
 
 }
+
 ```
+
+Helper Methods : [MySecurityUtil.java](#)
 
 ## MyAccessDeniedHandler
 ```
