@@ -230,7 +230,7 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
 
 ```
 
-Helper Methods : [MySecurityUtil.java](#)
+Helper Methods : [MySecurityUtil.java](https://github.com/hovermind/springboot-webmvc/blob/master/MySecurityUtil.md)
 
 ## MyAccessDeniedHandler
 ```
