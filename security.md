@@ -146,6 +146,9 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 	private MyAuthenticationSuccessHandler successHandler;
 	
 	@Autowired
+	private McAuthenticationFailureHandler failureHandler;
+	
+	@Autowired
 	private MyUserDetailsService userDetailsService;
 	
 
@@ -160,7 +163,8 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/support").hasAnyAuthority("SUPPORT")
         .anyRequest().authenticated()
         .and()
-        .formLogin().loginPage("/login").failureUrl("/login?error").successHandler(successHandler)
+        .formLogin().loginPage("/login").failureUrl("/login?error").usernameParameter("username").passwordParameter("password")
+        .successHandler(successHandler).failureHandler(failureHandler)
         .and()
         .logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout").deleteCookies("remember-me")
         .and()
@@ -228,6 +232,29 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
 
 }
 
+```
+
+## MyAuthenticationFailureHandler
+```
+@Component("myAuthenticationFailureHandler")
+public class MyAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
+
+	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+
+	@Override
+	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+		
+		//super.onAuthenticationFailure(request, response, authException);
+		
+		String userName = request.getParameter("username");
+		
+		request.getSession(false).setAttribute(MyConstants.LOGIN_LAST_USER_NAME_KEY, userName);
+
+		redirectStrategy.sendRedirect(request, response, "/login?error");
+
+	}
+
+}
 ```
 
 Helper Methods : [MySecurityUtil.java](https://github.com/hovermind/springboot-webmvc/blob/master/MySecurityUtil.md)
