@@ -125,7 +125,7 @@ Go to: [start.spring.io](http://start.spring.io/) and Generate Project
 
 	<build>
 
-		<finalName>MC</finalName>
+		<finalName>hovermind</finalName>
 
 		<plugins>
 
