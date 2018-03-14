@@ -1,4 +1,4 @@
-## `ServiceGenerator.java`
+## Retrofit2 `ServiceGenerator.java`
 ```
 public class ServiceGenerator {
 
