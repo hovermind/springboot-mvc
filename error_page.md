@@ -33,4 +33,6 @@ server.error.whitelabel.enabled= false
 </html> 
 ```
 
+## More [Error page total control](https://github.com/hovermind/springboot-webmvc/blob/master/error_page_total_control.md)
+
 ## See [Controller Advice to Handle Exception & Error](https://github.com/hovermind/springboot-webmvc/blob/master/controller_advice.md)
