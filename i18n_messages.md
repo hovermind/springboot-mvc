@@ -1,5 +1,10 @@
 ## IMyMessageResolver interface
 ```
+public enum MsgKeyEnum{
+	TEST,
+	LOL,
+	BLAH
+}
 
 public interface IMyMessageResolver {
 	
