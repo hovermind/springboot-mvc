@@ -38,6 +38,25 @@ public class MyServletContainerCustomiser implements EmbeddedServletContainerCus
 
 ## 404 when deployed to Tomcat as war
 ```
+@SpringBootApplication(exclude = ErrorMvcAutoConfiguration.class)
+public class MyApplication extends SpringBootServletInitializer {
+
+	public static void main(String[] args) {
+
+		ApplicationContext ctx = SpringApplication.run(MyApplication.class, args);
+
+		// 404
+		DispatcherServlet ds = (DispatcherServlet) ctx.getBean("dispatcherServlet");
+		ds.setThrowExceptionIfNoHandlerFound(true);
+	}
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		return builder.sources(MyApplication.class);
+	}
+}
+
+
 @ControllerAdvice
 public class MyControllerAdvice {
 
