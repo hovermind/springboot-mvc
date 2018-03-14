@@ -135,6 +135,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
 ## MySecurityConfig.java
 ```
+
 @Configuration
 public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -146,7 +147,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 	private MyAuthenticationSuccessHandler successHandler;
 	
 	@Autowired
-	private McAuthenticationFailureHandler failureHandler;
+	private MyAuthenticationFailureHandler failureHandler;
 	
 	@Autowired
 	private MyUserDetailsService userDetailsService;
@@ -154,29 +155,54 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		
 
-        http.csrf().disable()
-        .authorizeRequests()
-        .antMatchers("/", "/login", "/logout")
+        // csrf
+        http.csrf().disable();
+        
+        // permit all
+        http.authorizeRequests()
+        .antMatchers("/login", "/logout")
         .permitAll()
-        .antMatchers("/admin").hasAnyAuthority("ADMIN")
-        .antMatchers("/support").hasAnyAuthority("SUPPORT")
-        .anyRequest().authenticated()
-        .and()
-        .formLogin().loginPage("/login").failureUrl("/login?error").usernameParameter("username").passwordParameter("password")
-        .successHandler(successHandler).failureHandler(failureHandler)
-        .and()
-        .logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout").deleteCookies("remember-me")
-        .and()
-        .rememberMe()
-        .and()
-        .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+        .antMatchers("/mgmt/**", "/merchants/**", "/user/**", "/users/**", "/kyc/**", "/openam/**")
+        .permitAll();
+        
+        // role base access
+        http.authorizeRequests()
+        .antMatchers("/treasury").hasAnyAuthority("BUSSINESS_ADMIN")
+        .antMatchers("/subscriber").hasAnyAuthority("CUSTOMER_SUPPORT");
+        
+        // protect all
+        http.authorizeRequests().anyRequest().authenticated();
+
+        // form login
+        http.formLogin().loginPage("/login").failureUrl("/login?error=true").usernameParameter("username").passwordParameter("password")
+        .successHandler(successHandler).failureHandler(failureHandler);
+
+        // logout
+        http.logout()
+        .logoutUrl("/logout")
+        .logoutSuccessUrl("/login?logout=true")
+        .invalidateHttpSession(true)
+        .clearAuthentication(true)
+        .deleteCookies("JSESSIONID");
+
+        // acces denied
+        http.exceptionHandling().accessDeniedPage("/403");//.accessDeniedHandler(accessDeniedHandler);
+        
+        // seesion
+        http.sessionManagement().invalidSessionUrl("/login?invalidSession=true");
+        http.sessionManagement().maximumSessions(1).expiredUrl("/login?timeout=true");//.maxSessionsPreventsLogin(true);
+
+        http.sessionManagement().sessionFixation().changeSessionId();
+        
+        //.deleteCookies("remember-me").rememberMe();
 	}
 
 	@Override
 	public void configure(AuthenticationManagerBuilder authBuilder) throws Exception {
 
-		//authBuilder.inMemoryAuthentication().withUser("user").password("password").roles("SUPPORT").and().withUser("admin").password("password").roles("ADMIN");
+		//authBuilder.inMemoryAuthentication().withUser("user").password("password").roles("CUSTOMER_SUPPORT").and().withUser("admin").password("password").roles("BUSSINESS_ADMIN");
 		//authBuilder.userDetailsService(new MyUserDetailsService()).passwordEncoder(new ShaPasswordEncoder(256));
 		
 		ReflectionSaltSource saltSource = new ReflectionSaltSource();
@@ -204,7 +230,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/bootstrap/**", "/webjars/**", "/jslib/**", "/css/**", "/js/**", "/font/**", "/images/**", "/icons/**", "/resources/**", "/static/**");
+		web.ignoring().antMatchers("/resources/**", "/static/**", "/bootstrap/**", "/webjars/**", "/jslib/**", "/css/**", "/js/**", "/font/**", "/images/**", "/icons/**");
 	}
 
 }
