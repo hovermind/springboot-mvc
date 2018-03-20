@@ -1,4 +1,4 @@
-## Context variables in Model/ModelAndView
+## Context variables (attributes of Model/ModelAndView)
 Spring Expression Language: `"${key}"`
 ```
 model.addAttribute("key", value); // value == any type
@@ -36,3 +36,4 @@ String index(HttpSession session) {
 // in template
 <p th:text="${session.mySessionAttribute}" th:unless="${session == null}">[...]</p>
 ```
+Note: `#session` will gives you direct access to the `javax.servlet.http.HttpSession object: ${#session.getAttribute('mySessionAttribute')}`
