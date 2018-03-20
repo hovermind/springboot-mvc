@@ -56,4 +56,4 @@ ServletContext attributes are shared between requests and sessions. `"${#servlet
 ```
 <p th:text="${#servletContext.getAttribute('myContextAttribute')}">MyContextAttribute</p>
 ```
-**See More:**[Expression Basic Objects](http://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#appendix-a-expression-basic-objects)
+**See More:** [Expression Basic Objects](http://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#appendix-a-expression-basic-objects)
