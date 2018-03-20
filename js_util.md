@@ -56,3 +56,19 @@ function deleteCookie(id, path){
 	}
 }
 ```
+## Context path
+```
+// in template (html head)
+<meta name="ctx" th:content="${#httpServletRequest.getContextPath()}" />
+
+function getContextPathWithSlash(){
+	
+	let ctxPath = $('meta[name="ctxPath"]').attr("content");
+	
+	if(!ctxPath){
+		return '/';
+	}
+	
+	return ctxPath + '/';
+}
+```
