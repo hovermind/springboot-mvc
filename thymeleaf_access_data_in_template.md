@@ -36,4 +36,4 @@ String index(HttpSession session) {
 // in template
 <p th:text="${session.mySessionAttribute}" th:unless="${session == null}">[...]</p>
 ```
-Note: `#session` will gives you direct access to the `javax.servlet.http.HttpSession object: ${#session.getAttribute('mySessionAttribute')}`
+**Note:** `#session` will gives you direct access to the `javax.servlet.http.HttpSession object: ${#session.getAttribute('mySessionAttribute')}`
