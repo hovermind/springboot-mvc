@@ -6,22 +6,17 @@ model.addAttribute("key", value); // value == any type
 // in template
 <p th:text="${key}"></p>
 ```
-## Request parameters
-`"${param.}"`
+## Spring beans
+`"${@beanName.}"`
 ```
-// in controller
-public String redirect() {
-    return "redirect:/login?error=true";
+// spring bean
+Component("urlService")
+public class UrlService{
+
 }
 
-// in tempate
-<p th:if="${param.error}">Error during login, check id/password</p>
-```
-## HttpServletRequest object
-`"${#request.}"`
-```
-<p th:text="${#request.getParameter('q')}">Param</p>
-<p th:text="${#request.getContextPath()}">Context Path</p>
+// in template
+<p th:text="${@urlService.getApplicationUrl()}">...</p> 
 ```
 ## Session attributes
 `"${session.}"` (not `#session`)
@@ -38,21 +33,26 @@ String index(HttpSession session) {
 ```
 **Note:** `#session` will gives you direct access to the `javax.servlet.http.HttpSession object: ${#session.getAttribute('mySessionAttribute')}`
 
+## Request parameters (`?q=...`)
+`"${param.}"`
+```
+// in controller
+public String redirect() {
+    return "redirect:/login?error=true";
+}
+
+// in tempate
+<p th:if="${param.error}">Error during login, check id/password</p>
+```
+## HttpServletRequest object
+`"${#request.}"`
+```
+<p th:text="${#request.getParameter('q')}">Param</p>
+<p th:text="${#request.getContextPath()}">Context Path</p>
+```
+
 ## ServletContext attributes
 ServletContext attributes are shared between requests and sessions. `"${#servletContext.}"`
 ```
 <p th:text="${#servletContext.getAttribute('myContextAttribute')}">MyContextAttribute</p>
 ```
-## Spring beans
-`"${@beanName.}"`
-```
-// spring bean
-Component("urlService")
-public class UrlService{
-
-}
-
-// in template
-<p th:text="${@urlService.getApplicationUrl()}">...</p> 
-```
-
