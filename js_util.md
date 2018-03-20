@@ -34,3 +34,25 @@ function fetchTimeZoneOffSet(){
 	return date.getTimezoneOffset();
 }
 ```
+## Delete cookie
+```
+function deleteCookie(id, path){
+	
+	if(!id){
+		id = 'JSESSIONID';
+	}
+	
+	if(!path){
+		path = '/mc';
+	}
+	
+	Cookies.remove(id, { path: path });
+	console.log('attemted to delete cookie for ' + id);
+	
+	let cookey = Cookies.get(id);
+	if(cookey){  // removeCookie did not work
+		console.log('removeCookie did not work => trying : Cookies.set');
+		Cookies.set(id, '', { expires: -1, path: path });
+	}
+}
+```
