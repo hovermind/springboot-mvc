@@ -37,3 +37,22 @@ String index(HttpSession session) {
 <p th:text="${session.mySessionAttribute}" th:unless="${session == null}">[...]</p>
 ```
 **Note:** `#session` will gives you direct access to the `javax.servlet.http.HttpSession object: ${#session.getAttribute('mySessionAttribute')}`
+
+## ServletContext attributes
+ServletContext attributes are shared between requests and sessions. `"${#servletContext.}"`
+```
+<p th:text="${#servletContext.getAttribute('myContextAttribute')}">MyContextAttribute</p>
+```
+## Spring beans
+`"${@beanName.}"`
+```
+// spring bean
+Component("urlService")
+public class UrlService{
+
+}
+
+// in template
+<p th:text="${@urlService.getApplicationUrl()}">...</p> 
+```
+
