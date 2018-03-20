@@ -1,5 +1,5 @@
 ## Context variables in Model/ModelAndView
-`"${key}"`
+Spring Expression Language: `"${key}"`
 ```
 model.addAttribute("key", value); // value == any type
 
@@ -9,6 +9,7 @@ model.addAttribute("key", value); // value == any type
 ## Request parameters
 `"${param.}"`
 ```
+// in controller
 public String redirect() {
     return "redirect:/login?error=true";
 }
@@ -21,4 +22,17 @@ public String redirect() {
 ```
 <p th:text="${#request.getParameter('q')}">Param</p>
 <p th:text="${#request.getContextPath()}">Context Path</p>
+```
+## Session attributes
+`"${session.}"` (not `#session`)
+```
+// in controller
+@RequestMapping({"/"})
+String index(HttpSession session) {
+    session.setAttribute("mySessionAttribute", "someValue");
+    return "index";
+}
+
+// in template
+<p th:text="${session.mySessionAttribute}" th:unless="${session == null}">[...]</p>
 ```
