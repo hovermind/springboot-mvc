@@ -117,6 +117,13 @@ public class JsonCrudRepository<T, I extends IJcFileInfo<T>> implements IJsonCru
 		
 		String jsonFolderLocation = fileInfo.getJsonFolderLocation();
 		String rootFolder = JcFileUtil.getRealFolderPath(jsonFolderLocation, servletContext);
+		
+		Path rootFolderPath = Paths.get(rootFolder);
+		boolean rootFolderExist = Files.exists(rootFolderPath);
+		boolean isRootFolderOk = rootFolderExist && Files.isDirectory(rootFolderPath);
+		if(!isRootFolderOk) {
+			throw new JsonCrudException("Root folder for json files does not exist or not a directory");
+		}
 
 		Collection<File> files = JcFileUtil.getFileList(rootFolder);
 
