@@ -343,3 +343,47 @@ public interface IJcFileInfo<T> {
 	public String getUri(T bean);
 }
 ```
+## RootFolderSetting
+```
+@Component("rootFolderSetting")
+@ConfigurationProperties(prefix = "json.crud.root.folder")
+public class RootFolderSetting {
+
+	private String location;
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	
+	
+}
+```
+## MyFileInfo
+```
+@Component("myFileInfo")
+public class MyFileInfo<T extends ThresholdSetting> implements IJcFileInfo<T> {
+
+	@Autowired
+	private RootFolderSetting rootFolderSetting;
+
+	@Override
+	public String getJsonFolderLocation() {
+		String rootFolder = rootFolderSetting.getLocation();
+		return rootFolder;
+	}
+
+	@Override
+	public String getUri(T bean) {
+
+		// logic
+
+		return null;
+	}
+
+}
+
+```
