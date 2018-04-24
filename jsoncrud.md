@@ -77,7 +77,7 @@ public class JsonCrudRepository<T, I extends IJcFileInfo<T>> implements IJsonCru
 	@Override
 	public void create(T bean) throws JsonCrudException {
 
-		String fileUri = fileInfo.getUri(bean);
+		String fileUri = getRealPathUri(fileInfo.getUri(bean));
 
 		if (JcFileUtil.exists(fileUri)) { // duplicate if file already exist
 			throw new JsonCrudException("Duplicate file.");
@@ -115,17 +115,16 @@ public class JsonCrudRepository<T, I extends IJcFileInfo<T>> implements IJsonCru
 	@Override
 	public List<T> readAll(Class<T> clazz) throws JsonCrudException {
 		
-		String jsonFolderLocation = fileInfo.getJsonFolderLocation();
-		String rootFolder = JcFileUtil.getRealFolderPath(jsonFolderLocation, servletContext);
+		String rootFolderLocation = fileInfo.getRootFolderLocation();
+		//String rootFolder = JcFileUtil.getRealFolderPath(jsonFolderLocation, servletContext);
 		
-		Path rootFolderPath = Paths.get(rootFolder);
-		boolean rootFolderExist = Files.exists(rootFolderPath);
-		boolean isRootFolderOk = rootFolderExist && Files.isDirectory(rootFolderPath);
+		Path rootFolderPath = Paths.get(rootFolderLocation);
+		boolean isRootFolderOk = Files.exists(rootFolderPath) && Files.isDirectory(rootFolderPath);
 		if(!isRootFolderOk) {
 			throw new JsonCrudException("Root folder for json files does not exist or not a directory");
 		}
 
-		Collection<File> files = JcFileUtil.getFileList(rootFolder);
+		Collection<File> files = JcFileUtil.getFileList(rootFolderLocation);
 
 		List<T> list = new ArrayList<T>();
 
@@ -147,7 +146,7 @@ public class JsonCrudRepository<T, I extends IJcFileInfo<T>> implements IJsonCru
 	@Override
 	public void update(T bean) throws JsonCrudException {
 
-		String fileUri = fileInfo.getUri(bean);
+		String fileUri = getRealPathUri(fileInfo.getUri(bean));
 
 		if (!JcFileUtil.exists(fileUri)) {
 			throw new JsonCrudException("File not found.");
@@ -167,7 +166,7 @@ public class JsonCrudRepository<T, I extends IJcFileInfo<T>> implements IJsonCru
 	@Override
 	public void delete(T bean) throws JsonCrudException {
 
-		String fileUri = fileInfo.getUri(bean);
+		String fileUri = getRealPathUri(fileInfo.getUri(bean));
 
 		if (!JcFileUtil.exists(fileUri)) {
 			throw new JsonCrudException("File not found.");
@@ -181,6 +180,10 @@ public class JsonCrudRepository<T, I extends IJcFileInfo<T>> implements IJsonCru
 	}
 
 
+	private String getRealPathUri(String uri) {
+		String realUri = servletContext.getRealPath(uri);
+		return realUri;
+	}
 }
 ```
 
@@ -230,11 +233,26 @@ public class JcFileUtil {
 	}
 
 	public static void create(String fileUri) throws IOException {
+		
+		resolveDirectory(fileUri); // creates necessary Dirs if not exist
 
 		File file = new File(fileUri);
 
 		file.createNewFile();
 
+	}
+
+	public static void resolveDirectory(String fileUri) {
+		
+		Path path = Paths.get(fileUri); 
+		File parentDir = new File(path.getParent().toString());
+		
+		if(parentDir.exists()) {
+			return;
+		}
+		
+		// make all necessary directories
+		parentDir.mkdirs();  // will throw IOException if can not create dirs
 	}
 
 	public static void delete(String fileUri) throws IOException {
@@ -264,7 +282,9 @@ public class JcFileUtil {
 	}
 	
 	public static String getRealFolderPath(String uri, ServletContext servletContext) {
+		
 		String rootJsonFileDir = servletContext.getRealPath(uri);
+		
 		return rootJsonFileDir;
 	}
 
@@ -346,7 +366,7 @@ public class JcJsonHelper<T> implements IJcJsonHelper<T> {
 ### IJcFileInfo
 ```
 public interface IJcFileInfo<T> {
-	public String getJsonFolderLocation();
+	public String getRootFolderLocation();
 	public String getUri(T bean);
 }
 ```
@@ -372,23 +392,42 @@ public class RootFolderSetting {
 ## MyFileInfo
 ```
 @Component("myFileInfo")
-public class MyFileInfo<T extends ThresholdSetting> implements IJcFileInfo<T> {
+public class MyFileInfo<T extends MyBean> implements IJcFileInfo<T> {
+
+	private final String extension = ".json";
 
 	@Autowired
 	private RootFolderSetting rootFolderSetting;
 
 	@Override
-	public String getJsonFolderLocation() {
+	public String getRootFolderLocation() {
 		String rootFolder = rootFolderSetting.getLocation();
+		// String jsonFileDir = servletContext.getRealPath(rootFolder);
 		return rootFolder;
 	}
 
 	@Override
-	public String getUri(T bean) {
+	public String getUri(ThresholdSetting bean) {
+
+		String rootFolder = getRootFolderLocation();
+
+		StringBuilder jsonFileUriBuilder = new StringBuilder();
+
+		jsonFileUriBuilder.append(rootFolder);
+		jsonFileUriBuilder.append(File.separator);
+		jsonFileUriBuilder.append(bean.getType());
+		jsonFileUriBuilder.append(File.separator);
 
 		// logic
+		if (DrcType.residual.equals(bean.getType())) {
+			jsonFileUriBuilder.append(bean.getCurrencyName().toUpperCase());
+		} else {
+			jsonFileUriBuilder.append(bean.getCarrier());
+			jsonFileUriBuilder.append(File.separator);
+			jsonFileUriBuilder.append(bean.getCurrencyName().toUpperCase());
+		}
 
-		return null;
+		return jsonFileUriBuilder.toString() + extension;
 	}
 
 }
