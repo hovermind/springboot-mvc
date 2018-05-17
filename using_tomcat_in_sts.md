@@ -4,7 +4,7 @@ Using Tomcat server for Spring Boot App (war deploy)
 Window > Show View > Servers
 
 ## Create new server
-Right Click (Empty space in Servers view) > New Server    
+Right Click (empty space in servers view) > New Server    
 Tomcat v8.0 Server > Server name: My_Server > Finish
 
 ## Tomcat Setting Overview
