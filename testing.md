@@ -50,7 +50,7 @@ public class MyTests {
     }
 }
 ```
-**Note::** test class must be annotated with `@RunWith(SpringRunner.class)`    
+**Note:** test class must be annotated with `@RunWith(SpringRunner.class)`    
 
 Interesting thing here is the use of @MockBean. It creates a Mock for the EmployeeRepository which can be used to bypass the call to the actual EmployeeRepository
 ```
