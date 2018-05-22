@@ -78,6 +78,6 @@ If you use Mockito in tests you typically:
 * Execute the code under test
 * Validate that the code executed correctly
 
-See: 
-[Mockito Doc](http://static.javadoc.io/org.mockito/mockito-core/2.18.3/org/mockito/Mockito.html#verification)
+See:     
+[Mockito Doc](http://static.javadoc.io/org.mockito/mockito-core/2.18.3/org/mockito/Mockito.html#verification)    
 [Creating mock objects with Mockito](http://www.vogella.com/tutorials/Mockito/article.html#creating-mock-objects-with-mockito)
