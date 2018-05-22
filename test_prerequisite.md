@@ -70,3 +70,14 @@ assertThat(a).isEqualTo(b).overridingErrorMessage("Error"); //AssertJ
 
 ## Mockito
 A mock object is a dummy implementation for an interface or a class in which you define the output of certain method calls. Mock objects are configured to perform a certain behavior during a test. They typically record the interaction with the system and tests can validate that.
+
+Mockito is a popular mock framework which can be used in conjunction with JUnit. Mockito allows you to create and configure mock objects. Using Mockito simplifies the development of tests for classes with external dependencies significantly.
+
+If you use Mockito in tests you typically:
+* Mock away external dependencies and insert the mocks into the code under test
+* Execute the code under test
+* Validate that the code executed correctly
+
+See: 
+[Mockito Doc](http://static.javadoc.io/org.mockito/mockito-core/2.18.3/org/mockito/Mockito.html#verification)
+[Creating mock objects with Mockito](http://www.vogella.com/tutorials/Mockito/article.html#creating-mock-objects-with-mockito)
