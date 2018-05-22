@@ -116,8 +116,7 @@ MockMvc is flexible, and we can create any request using it.
 @RunWith(SpringRunner.class)
 @SpringBootTest(SpringBootTest.WebEnvironment.MOCK, classes = Application.class)
 @AutoConfigureMockMvc
-@TestPropertySource(
-  locations = "classpath:application-integrationtest.properties")
+@TestPropertySource(locations = "classpath:application-integrationtest.properties")
 public class EmployeeRestControllerIntegrationTest {
  
     @Autowired
