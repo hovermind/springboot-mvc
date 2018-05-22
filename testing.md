@@ -4,9 +4,6 @@ Content from:
 [Testing Spring Boot Applications](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-testing.html#boot-features-testing-spring-boot-applications)    
 [esting in Spring Boot](http://www.baeldung.com/spring-boot-testing)
 
-
-Annotation for TestClass: `@RunWith(SpringRunner.class)`    
-
 ## Autowiring just for test
 During component scanning, we might find components or configurations created only for specific tests accidentally get picked up everywhere. To help prevent that, Spring Boot provides @TestConfiguration annotation that can be used on classes in src/test/java to indicate that they should not be picked up by scanning.    
 
