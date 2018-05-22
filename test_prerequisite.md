@@ -25,7 +25,7 @@ public class MyTests {
 * One possible convention is to use the "should" in the test method name. For example, "ordersShouldBeCreated" or "menuShouldGetActive".
 * Another approach is to use "Given[ExplainYourInput]When[WhatIsDone]Then[ExpectedResult]" for the display name of the test method
 
-Details:    
+See:    
 [JUnit Annotations](https://junit.org/junit5/docs/current/user-guide/#writing-tests-annotations)    
 [Unit Testing with JUnit](http://www.vogella.com/tutorials/JUnit/article.html)
 
@@ -66,7 +66,7 @@ assertThat(actual).isNull();  //AssertJ
 assertThat("Error", a, equalTo(b)); //Hamcrest
 assertThat(a).isEqualTo(b).overridingErrorMessage("Error"); //AssertJ
 ```
-[Details - Hamcrest vs. AssertJ](https://dzone.com/articles/hamcrest-vs-assertj-assertion-frameworks-which-one)
+See: [Hamcrest vs. AssertJ](https://dzone.com/articles/hamcrest-vs-assertj-assertion-frameworks-which-one)
 
 ## Mockito
 A mock object is a dummy implementation for an interface or a class in which you define the output of certain method calls. Mock objects are configured to perform a certain behavior during a test. They typically record the interaction with the system and tests can validate that.
