@@ -1,4 +1,6 @@
 ## JUnit
+A unit test should test functionality in isolation. Side effects from other classes or the system should be eliminated for a unit test, if possible.
+
 A JUnit test is a method contained in a class which is only used for testing. This is called a Test class. To define that a certain method is a test method, annotate it with the @Test annotation. You use an assert method, provided by JUnit or another assert framework, to check an expected result versus the actual result.
 ```
 import static org.junit.jupiter.api.Assertions.assertEquals;
