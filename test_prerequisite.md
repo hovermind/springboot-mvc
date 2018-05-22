@@ -67,3 +67,6 @@ assertThat("Error", a, equalTo(b)); //Hamcrest
 assertThat(a).isEqualTo(b).overridingErrorMessage("Error"); //AssertJ
 ```
 [Details - Hamcrest vs. AssertJ](https://dzone.com/articles/hamcrest-vs-assertj-assertion-frameworks-which-one)
+
+## Mockito
+A mock object is a dummy implementation for an interface or a class in which you define the output of certain method calls. Mock objects are configured to perform a certain behavior during a test. They typically record the interaction with the system and tests can validate that.
