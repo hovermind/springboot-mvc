@@ -30,11 +30,8 @@ Details:
 [Unit Testing with JUnit](http://www.vogella.com/tutorials/JUnit/article.html)
 
 ## Java assertion frameworks - AssertJ vs Hamcrest
-**Note:**    
-AssertJ uses fluent api, therefore recommended.      
-Details:    
-[Fluent assertions for java](http://joel-costigliola.github.io/assertj/)     
-[Introduction to AssertJ](http://www.baeldung.com/introduction-to-assertj)
+**Note:** AssertJ uses fluent api, therefore recommended.      
+Details: [Fluent assertions for java](http://joel-costigliola.github.io/assertj/) & [Introduction to AssertJ](http://www.baeldung.com/introduction-to-assertj)
 
 #### Simple Assertions
 ```
