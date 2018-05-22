@@ -1,8 +1,8 @@
-Read: [Test Prerequisite](https://github.com/hovermind/springboot-webmvc/blob/master/test_prerequisite.md)
+## Read: [Test Prerequisite](https://github.com/hovermind/springboot-webmvc/blob/master/test_prerequisite.md)
 
 Annotation for TestClass: `@RunWith(SpringRunner.class)`    
 
-**Autowiring just for test**    
+#### Autowiring just for test
 During component scanning, we might find components or configurations created only for specific tests accidentally get picked up everywhere. To help prevent that, Spring Boot provides @TestConfiguration annotation that can be used on classes in src/test/java to indicate that they should not be picked up by scanning.    
 
 ```
