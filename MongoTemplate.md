@@ -3,7 +3,7 @@
 
 Repositories are more convenient but templates give you more fine-grained control over what to execute.
 
-We generally recommend the following approach:
+Generally recommend approach:
  - Start with the repository abstract and just declare simple queries using the query derivation mechanism or manually defined queries.
  - For more complex queries, add manually implemented methods to the repository (as documented here). For the implementation use MongoTemplate.
 
