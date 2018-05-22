@@ -109,4 +109,28 @@ public void givenEmployees_whenGetEmployees_thenReturnJsonArray()
 ```
 The get(…) method call can be replaced by other methods corresponding to HTTP verbs like put(), post(), etc. Please note that we are also setting the content type in the request.    
 
-MockMvc is flexible, and we can create any request using it.
+MockMvc is flexible, and we can create any request using it.    
+
+## @SpringBootTest - integration testing
+```
+@RunWith(SpringRunner.class)
+@SpringBootTest(SpringBootTest.WebEnvironment.MOCK, classes = Application.class)
+@AutoConfigureMockMvc
+@TestPropertySource(
+  locations = "classpath:application-integrationtest.properties")
+public class EmployeeRestControllerIntegrationTest {
+ 
+    @Autowired
+    private MockMvc mvc;
+ 
+    @Autowired
+    private EmployeeRepository repository;
+ 
+    // write test cases here
+}
+```
+The @SpringBootTest annotation can be used when we need to bootstrap the entire container. The annotation works by creating the ApplicationContext that will be utilized in our tests.
+
+We can use the webEnvironment attribute of @SpringBootTest to configure our runtime environment; we’re using WebEnvironment.MOCK here – so that the container will operate in a mock servlet environment.
+
+We can use the @TestPropertySource annotation to configure locations of properties files specific to our tests. Please note that the property file loaded with @TestPropertySource will override the existing application.properties file.
