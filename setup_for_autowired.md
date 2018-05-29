@@ -76,3 +76,29 @@ public class MyController {
 }
 ```
 
+## @Bean only
+Let's consider I want specific implementation depending on some dynamic state. @Bean is perfect for that case
+```
+@Bean
+@Scope("prototype")
+public SomeService someService() {
+    switch (state) {
+    case 1:
+        return new Impl1();
+    case 2:
+        return new Impl2();
+    case 3:
+        return new Impl3();
+    default:
+        return new Impl();
+    }
+}
+```
+However there is no way to do that with @Component.
+
+## Reasons for @Autowired component is null
+1. YOU INSTANTIATED THE A CLASS MANUALLY
+2. YOU FORGOT TO ANNOTATE A CLASS AS A COMPONENT OR ONE OF ITS DESCENDANTS
+
+Details: [Two reasons why your Spring @Autowired component is null](https://www.moreofless.co.uk/spring-mvc-java-autowired-component-null-repository-service/)
+
