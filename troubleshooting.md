@@ -10,7 +10,7 @@ Add thymeleaf-layout-dialect dependency
     
     <dependency>
       <groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
     
     <dependency>
