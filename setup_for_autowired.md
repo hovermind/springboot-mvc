@@ -7,13 +7,13 @@ Sometimes automatic configuration is not an option. When? Let's imagine that you
 The @Bean annotation returns an object that spring should register as bean in application context. The body of the method bears the logic responsible for creating the instance.
 
 ## 1 Autowiring by @Component
-**Create interface**
+**Step- 1: Create interface**
 ```
 public interface IRepo{
   public int getRandomInt();
 }
 ```
-**Create class & implements that interfcae. Annotate class with @Component / @Service / @Repository**
+**Step - 2: Create class & implements that interfcae. Annotate class with @Component / @Service / @Repository**
 ```
 @Repository
 public class Repo implements IRepo {
@@ -24,7 +24,7 @@ public class Repo implements IRepo {
   }
 }
 ```
-**Annotate interface type reference variable with @Autowired**
+**Step - 3: Annotate interface type reference variable with @Autowired**
 ```
 @Controller
 public class MyController {
