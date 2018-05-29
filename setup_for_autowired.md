@@ -6,7 +6,7 @@
 Sometimes automatic configuration is not an option. When? Let's imagine that you want to wire components from 3rd-party libraries (you don't have the source code so you can't annotate its classes with @Component), so automatic configuration is not possible.
 The @Bean annotation returns an object that spring should register as bean in application context. The body of the method bears the logic responsible for creating the instance.
 
-## 1 @Autowired by @Component
+## 1 Autowiring by @Component
 * Create interface, create class & implements that interfcae
 * Annotate class with @Component / @Service / @Repository
 * Annotate interface type reference variable with @Autowired
@@ -32,7 +32,7 @@ public class MyController {
   
 }
 ```
-## 2 @Autowired by @Configuration & @Bean
+## 2 Autowiring by @Configuration & @Bean
 If you want to customize the class instance registering as bean in application context (for DI) use @Configuration & @Bean annotations    
 
 **Step - 1: Create class (don't mark with @Component / @Repository / @Service)**
