@@ -1,7 +1,9 @@
 
 In Spring Boot 2.x, one of the main goals was to simplify security configuration and make adding custom security easy. By default, everything is secured, including static resources and Actuator endpoints. If Spring Security is on the classpath, Spring Boot will add @EnableWebSecurity and rely on Spring Security’s content-negoation to decide which authentication mechanism to use. 
 
-Once users decide that they want to add custom security, the default security configuration provided by Spring Boot will back off completely. At this point, users need to explicitly define all the bits they want to secure. This means security configuration is now in one place and avoids any kind of ordering issues with existing WebSecurityConfigurerAdapters.
+Once users decide that they want to add custom security, the default security configuration provided by Spring Boot will back off completely. At this point, users need to explicitly define all the bits they want to secure. This means security configuration is now in one place and avoids any kind of ordering issues with existing WebSecurityConfigurerAdapters.    
+
+Details: [what's new in spring boot 2](http://therealdanvega.com/blog/2018/03/01/what-is-new-spring-boot-2)
 
 ## 1. [Seed mongodb](https://github.com/hovermind/springboot-webmvc/blob/master/mongodb_seeding.md)
 
@@ -35,7 +37,5 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 }
 
 ```
-See [what's new in spring boot 2](http://therealdanvega.com/blog/2018/03/01/what-is-new-spring-boot-2)
-
 
 ## 5. Create [authentication handlers](https://github.com/hovermind/springboot-webmvc/blob/master/security_authentication_handler.md) if needed
