@@ -1,4 +1,6 @@
-#### [Seed mongodb and create MongoRepository or MongoTemplate](https://github.com/hovermind/springboot-webmvc/blob/master/seed_mongodb.md)
+#### [Seed mongodb](https://github.com/hovermind/springboot-webmvc/blob/master/mongodb_seeding.md)
+
+#### Create [MongoRepository](https://github.com/hovermind/springboot-webmvc/blob/master/mongo_repository.md) or [MongoTemplate](https://github.com/hovermind/springboot-webmvc/blob/master/mongo_template.md)
 
 ## MyUserDetails.java
 ```
