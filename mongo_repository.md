@@ -37,7 +37,7 @@ public class McAccount {
 
 ```
 
-## MongoRepository (you can use MongoTemplate)
+## MongoRepository (you can use [MongoTemplate](https://github.com/hovermind/springboot-webmvc/blob/master/mongo_template.md))
 `IMyAccountRepository.java`
 ```
 @Repository("myAccountRepository")
