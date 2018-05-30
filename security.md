@@ -33,4 +33,4 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 See [WHAT’S NEW IN SPRING BOOT 2](http://therealdanvega.com/blog/2018/03/01/what-is-new-spring-boot-2)
 
 
-## [Authentication Handlers](https://github.com/hovermind/springboot-webmvc/blob/master/security_authentication_handler.md)
+## 5. Create [authentication handlers](https://github.com/hovermind/springboot-webmvc/blob/master/security_authentication_handler.md) if needed
