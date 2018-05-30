@@ -19,7 +19,7 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
 }
 
 ```
-Helper Methods : [MySecurityUtil.java](https://github.com/hovermind/springboot-webmvc/blob/master/MySecurityUtil.md)
+Helper Methods : [MySecurityUtil](https://github.com/hovermind/springboot-webmvc/blob/master/security_authentication_handler.md#mysecurityutil)
 
 ## MyAuthenticationFailureHandler
 ```
