@@ -1,33 +1,4 @@
-## Seed MongoDB
-```
-use mydb
-db.account.insert({"_id" : "aaa", "password": "4d3feab92b4a25b286b2eaecc1017f46e2427ca1ccbea59cf4266f8cfcbba2c5", "salt" : "a3", "roles" : ["USER", "ADMIN"]})
-db.account.insert({"_id" : "bbb", "password": "9ab708ad241058616250eb77da455dc2587abda564151062f758451331120065", "salt" : "b3", "roles" : ["USER", "SUPPORT"]})
-```
-
-## MyAccount.java for mongodb (Collection)
-```
-@Document(collection = "account")
-public class MyAccount {
-
-	@Id
-	private String id;
-	private String password;
-	private String salt;
-	private String[] roles;
-	
-	// add getter setter
-}
-```
-## IMyAccountRepository.java to get data from mongodb
-```
-
-@Repository("myAccountRepository")
-public interface IMyAccountRepository extends MongoRepository<MyAccount, String> {
-	 MyAccount findById(String id);
-}
-
-```
+#### [Seed mongodb and create MongoRepository or MongoTemplate](https://github.com/hovermind/springboot-webmvc/blob/master/seed_mongodb.md)
 
 ## MyUserDetails.java
 ```
