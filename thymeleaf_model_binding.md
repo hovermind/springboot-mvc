@@ -91,7 +91,7 @@ public class FormModel {
 }
 
 @PostMapping("/end_point")
-public String displayMyPagePOST(@Valid FormModel formModel, Model model) {
+public String displayMyPagePOST(@ModelAttribute @Valid FormModel formModel, Model model) {
 
 }
 
