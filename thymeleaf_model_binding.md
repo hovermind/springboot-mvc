@@ -36,7 +36,7 @@ public class MyController{
 	}
 
 	@PostMapping("/end_point")
-	public String displayMyPagePOST(FormModel formModel, Model model) {
+	public String displayMyPagePOST(@ModelAttribute FormModel formModel, Model model) {
 		
 		model.addAttribute("page_title", "MyPage");
 		
