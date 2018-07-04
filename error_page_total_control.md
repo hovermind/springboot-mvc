@@ -16,6 +16,8 @@ public class MyApplication extends SpringBootServletInitializer {
 ```
 
 ## Deployed to Tomcat as war
+
+#### `Error pages in web.xml`
 `src/main/webapp/WEB-INF/web.xml`
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -36,6 +38,8 @@ public class MyApplication extends SpringBootServletInitializer {
 
 </web-app>
 ```
+**`web.xml` sets error page urls and ErrorController methods handle those urls**
+
 #### ErrorController
 ```
 @Controller
@@ -139,7 +143,7 @@ public class MyErrorController extends BaseController{
 </body>
 </html>
 ```
-* or handled by `@ExceptionHandler(Exception.class)` in ControllerAdvice 
+* or handled by `@ExceptionHandler(Exception.class)` in ControllerAdvice (if not error code not set in `web.xml`)
 ```
 @ControllerAdvice
 public class MyControllerAdvice {
@@ -155,7 +159,6 @@ public class MyControllerAdvice {
 ```
 
 #### 403
-* resolved from `web.xml`
 * endpoint set by `HttpSecurity.accessDeniedPage("")` config
 * mapped to ErrorController handler method i.e.`@GetMapping("403")`
 ```
