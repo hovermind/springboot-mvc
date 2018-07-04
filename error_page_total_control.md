@@ -71,7 +71,8 @@ public class MyErrorController extends BaseController{
 }
 ```
 #### 404
-Resolved from `web.xml` and mapped to ErrorController handler method i.e.`@GetMapping("404")`
+* resolved from `web.xml`
+* mapped to ErrorController handler method i.e.`@GetMapping("404")`
 ```
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -79,7 +80,7 @@ Resolved from `web.xml` and mapped to ErrorController handler method i.e.`@GetMa
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" th:href="@{/css/custom_login_error_page.css}" />
+<link rel="stylesheet" th:href="@{/css/error_page.css}" />
 
 <title>404</title>
 </head>
@@ -106,7 +107,9 @@ Resolved from `web.xml` and mapped to ErrorController handler method i.e.`@GetMa
 ```
 
 #### 500
-Resolved from `web.xml` and handled by `@ExceptionHandler(Exception.class)` in ControllerAdvice 
+* resolved from `web.xml`
+* mapped to ErrorController handler method i.e.`@GetMapping("500")`
+* or handled by `@ExceptionHandler(Exception.class)` in ControllerAdvice 
 ```
 @ControllerAdvice
 public class MyControllerAdvice {
@@ -122,7 +125,9 @@ public class MyControllerAdvice {
 ```
 
 #### 403
-Resolved from `HttpSecurity.accessDeniedPage("")` config and mapped to ErrorController handler method i.e.`@GetMapping("403")`
+* resolved from `web.xml`
+* endpoint set by `HttpSecurity.accessDeniedPage("")` config
+* mapped to ErrorController handler method i.e.`@GetMapping("403")`
 ```
 @Configuration
 public class MySecurityConfig extends WebSecurityConfigurerAdapter {
@@ -161,7 +166,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-## 404 when running in STS
+## 404 when running in STS/Eclipse
 ```
 @Component
 public class MyServletContainerCustomiser implements EmbeddedServletContainerCustomizer {
