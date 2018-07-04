@@ -199,6 +199,27 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
+#### error
+* ErrorController method handles `/error` i.e. `@GetMapping("error")`
+* Crontroller or service raises exceptions (MyControllerException, MyServiceException...)
+* Controller advice handles those exception and returns error page (can redirect too >> ErrorController method)
+```
+@ControllerAdvice
+public class MyControllerAdvice {
+
+	private final Logger mcLogger = LoggerFactory.getLogger(this.getClass());
+
+	@ExceptionHandler(CommonControllerException.class)
+	public String handleCommonControllerEx(CommonControllerException ex, Model model) {
+
+		model.addAttribute(STATUS, ex.getHttpStatus().value());
+		model.addAttribute(ERROR, ex.getMessage());
+
+		return "error";
+	}
+}
+```
+
 ## 404 when running in STS/Eclipse
 ```
 @Component
