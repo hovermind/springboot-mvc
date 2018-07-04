@@ -13,7 +13,7 @@ If you disable white page, Thymeleaf will pickup pages as following
 * `404.html` from `template/error/404.html` (or `views/error/404.html`)
 * `500.html` from `template/error/500.html` (or `views/error/500.html`)
 
-`Create error.html`
+#### `error.html`
 ```
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/master}">
@@ -28,7 +28,7 @@ If you disable white page, Thymeleaf will pickup pages as following
 		<div class="jumbotron">
 
 			<h1>Error Occurred!</h1>
-			<p th:text="${'HttpStatus: ' + httpStatus}">
+			<p th:text="${'Status: ' + status}">
 			<p th:text="${message}">
 
 		</div>
