@@ -109,6 +109,36 @@ public class MyErrorController extends BaseController{
 #### 500
 * resolved from `web.xml`
 * mapped to ErrorController handler method i.e.`@GetMapping("500")`
+```
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/master}">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" th:href="@{/css/500_page.css}" />
+
+<title>Internal Server Error</title>
+</head>
+<body>
+
+	<div layout:fragment="content" align="center">
+
+		<div class="alert alert-danger" style="width: 40%;">
+
+			<div style="margin: 30px;">
+				<h2 class="error_page_title">Internal Server Error!</h2>
+
+				<div class="error_page_last_contents">Internal server error occurred.</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>
+```
 * or handled by `@ExceptionHandler(Exception.class)` in ControllerAdvice 
 ```
 @ControllerAdvice
