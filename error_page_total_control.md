@@ -1,4 +1,4 @@
-## Exclude ErrorMvcAutoConfiguration.class
+## Exclude `ErrorMvcAutoConfiguration.class`
 ```
 @SpringBootApplication(exclude = ErrorMvcAutoConfiguration.class)
 public class MyApplication extends SpringBootServletInitializer {
@@ -6,10 +6,6 @@ public class MyApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 
 		ApplicationContext ctx = SpringApplication.run(MyApplication.class, args);
-
-		// 404
-		//DispatcherServlet ds = (DispatcherServlet) ctx.getBean("dispatcherServlet");
-		//ds.setThrowExceptionIfNoHandlerFound(true);
 	}
 
 	@Override
@@ -19,75 +15,28 @@ public class MyApplication extends SpringBootServletInitializer {
 }
 ```
 
-## 404 when running in STS
+## Deployed to Tomcat as war
+`src/main/webapp/WEB-INF/web.xml`
 ```
-@Component
-public class MyServletContainerCustomiser implements EmbeddedServletContainerCustomizer {
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
 
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/500</location>
+	</error-page>
 
-	@Override
-	public void customize(ConfigurableEmbeddedServletContainer esc) {
-		
-		ErrorPage page404 = new ErrorPage(HttpStatus.NOT_FOUND, "/404");
-		
-		esc.addErrorPages(page404);
-
-	}
-}
+</web-app>
 ```
-
-## 404 when deployed to Tomcat as war
-```
-@SpringBootApplication(exclude = ErrorMvcAutoConfiguration.class)
-public class MyApplication extends SpringBootServletInitializer {
-
-	public static void main(String[] args) {
-
-		ApplicationContext ctx = SpringApplication.run(MyApplication.class, args);
-
-		// 404
-		DispatcherServlet ds = (DispatcherServlet) ctx.getBean("dispatcherServlet");
-		ds.setThrowExceptionIfNoHandlerFound(true);
-	}
-
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(MyApplication.class);
-	}
-}
-
-
-@ControllerAdvice
-public class MyControllerAdvice {
-
-	private final Logger MyLogger = LoggerFactory.getLogger(this.getClass());
-
-	@ExceptionHandler(NoHandlerFoundException.class)
-	public String handle404(NoHandlerFoundException ex) {
-		
-		MyLogger.debug("NoHandlerFoundException => handle 404");
-		
-		return "error/404";
-	}	
-}
-```
-
-## 500 - Internal Server Error
-```
-@ControllerAdvice
-public class MyControllerAdvice {
-
-	private final Logger MyLogger = LoggerFactory.getLogger(this.getClass());
-
-	@ExceptionHandler(Exception.class)
-	public String handleInternalServerError(Model model) {
-
-		return "error/500";
-	}
-}
-```
-
-## Error controller
+#### ErrorController
 ```
 @Controller
 public class MyErrorController extends BaseController{
@@ -97,7 +46,7 @@ public class MyErrorController extends BaseController{
 
 		model.addAttribute("error", "Test");
 
-		model.addAttribute("status", "444");
+		model.addAttribute("status", "000");
 
 		return "error";
 	}
@@ -118,6 +67,113 @@ public class MyErrorController extends BaseController{
 	public String not500(Model model) {
 
 		return "error/500";
+	}
+}
+```
+#### 404
+Resolved from `web.xml` and mapped to ErrorController handler method i.e.`@GetMapping("404")`
+```
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/master}">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" th:href="@{/css/custom_login_error_page.css}" />
+
+<title>404</title>
+</head>
+<body>
+
+	<div layout:fragment="content" align="center">
+
+		<div class="alert alert-danger" style="width: 40%;">
+
+			<div style="margin: 30px;">
+				<h2 class="error_page_title">Page not found.</h2>
+
+				<div class="error_page_contents">The requested page was not found.</div>
+
+				<div th:inline="text" class="error_page_last_contents"><a th:href="@{/home}"> Return to Main Page </a></div>
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>
+```
+
+#### 500
+Resolved from `web.xml` and handled by `@ExceptionHandler(Exception.class)` in ControllerAdvice 
+```
+@ControllerAdvice
+public class MyControllerAdvice {
+
+	private final Logger MyLogger = LoggerFactory.getLogger(this.getClass());
+
+	@ExceptionHandler(Exception.class)
+	public String handleInternalServerError(Model model) {
+
+		return "error/500";
+	}
+}
+```
+
+#### 403
+Resolved from `HttpSecurity.accessDeniedPage("")` config and mapped to ErrorController handler method i.e.`@GetMapping("403")`
+```
+@Configuration
+public class MySecurityConfig extends WebSecurityConfigurerAdapter {
+
+	//custom 403 access denied handler
+	//@Autowired
+	//private AccessDeniedHandler accessDeniedHandler;
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+
+		// csrf
+		http.csrf().disable();
+
+		// permit all
+		http.authorizeRequests()
+			.antMatchers("/login", "/logout").permitAll()
+
+		// role base access
+		http.authorizeRequests()
+			.antMatchers("/abc", "/abc/**").hasAnyAuthority("MY_ROLE")
+
+
+		// protect all
+		http.authorizeRequests().anyRequest().authenticated();
+
+
+		// access denied
+		http.exceptionHandling()
+			.accessDeniedPage("/403");
+			//.accessDeniedHandler(accessDeniedHandler);
+	}
+}
+```
+
+## 404 when running in STS
+```
+@Component
+public class MyServletContainerCustomiser implements EmbeddedServletContainerCustomizer {
+
+
+	@Override
+	public void customize(ConfigurableEmbeddedServletContainer esc) {
+		
+		ErrorPage page404 = new ErrorPage(HttpStatus.NOT_FOUND, "/404");
+		
+		esc.addErrorPages(page404);
+
 	}
 }
 ```
