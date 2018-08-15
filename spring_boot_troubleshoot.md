@@ -20,11 +20,11 @@ Add thymeleaf-layout-dialect dependency
     
 </dependencies>
 ```
-
-## invalid loc header (bad signature)
+## Currupted Jars in .m2 Maven Repository
+#### invalid loc header (bad signature)
 local m2 repository was corrupted. Manually deleted the local repository and forced maven to download again
 
-## type org.springframework.core.NestedRuntimeException cannot be resolved.It is indirectly referenced from required .class files
+#### type org.springframework.core.NestedRuntimeException cannot be resolved.It is indirectly referenced from required .class files
 local m2 repository was corrupted. Manually deleted the local repository and forced maven to download again
 
 ## Package name change
