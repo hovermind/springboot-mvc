@@ -1,4 +1,4 @@
-* [Currupted Jars in .m2 Maven Repository](#)
+* [Currupted Jars in .m2 Maven Repository](https://github.com/hovermind/springboot-webmvc/blob/master/spring_boot_troubleshoot.md#currupted-jars-in-m2-maven-repository)
 * [Error After Package Name Change](https://github.com/hovermind/springboot-webmvc/blob/master/spring_boot_troubleshoot.md#currupted-jars-in-m2-maven-repository)
 
 ## Thymeleaf layout not working
