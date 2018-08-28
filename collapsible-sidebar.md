@@ -81,3 +81,44 @@
 </body>
 </html>
 ```
+
+## Retaining Sidebar Open/Close State
+#### Sidebar State Flag in BaseViewModel
+Add `sidebarOpen` flag in BaseViewModel (inherited by all viewModels)
+```
+public class BaseViewModel {
+
+	private String sidebarOpen = true;
+
+	public String isSidebarOpen() {
+		return sidebarOpen;
+	}
+
+	public void setIsSidebarOpen(String sidebarOpen) {
+		this.sidebarOpen = sidebarOpen;
+	}
+}
+
+public class MyViewModel extends BaseViewModel {
+	// ... ... ...
+}
+```
+#### A Hidden Field to Retain Sidebar Open State
+A hidden field is bind to `sidebarOpen` property of `BaseViewModel` to retain menu state. 
+Value of hidden field is set in `toggleState()` (from `sidebar.js`)
+```
+<input type="hidden" th:field="{viewModel.sidebarOpen}" />
+```
+
+#### Restore Previous State (Opened/Closed)
+```
+<div id="wrapper" th:class="${viewModel?.sidebarOpen} ? 'toggled'">
+```
+Synchronize arrow symbol
+```
+<li class="sidebar-brand">
+	<a href="#menu-toggle" id="menu-toggle" style="margin-top: 20px; float: right;">
+		<i id="arrow_icon" th:class="${viewModel?.sidebarOpen} ? 'fa fa-chevron-right' : 'fa fa-chevron-left'" style="font-size: 20px !Important;" aria-hidden="true"></i>
+	</a>
+</li>
+```
