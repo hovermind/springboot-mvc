@@ -82,7 +82,7 @@ public class MySidebarConfig {
 }
 ```
 
-**In thymeleaf master template**
+**In thymeleaf master template**    
 Use `@beanName.property` where `@beanName` refers to a Spring Bean registered at your context.    
 (Hint: `@Component("mySidebarConfig")` => `@mySidebarConfig.shouldShowSidebar`)
 ```
