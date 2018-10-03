@@ -1,3 +1,5 @@
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](http://paypal.me/hovermind/10usd)
+
 ## Generate Project
 Go to: [start.spring.io](http://start.spring.io/) and Generate Project
 
