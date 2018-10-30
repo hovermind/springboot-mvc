@@ -69,6 +69,6 @@ function getContextPathWithSlash(){
 		return '/';
 	}
 	
-	return ctxPath + '/';
+	return ctxPath;
 }
 ```
