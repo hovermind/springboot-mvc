@@ -1,7 +1,7 @@
 ## Getting context path (end point after domain)
 ```
 // template
-<meta name="ctx" th:content="${#httpServletRequest.getContextPath()}" />
+<meta name="ctx" th:content="@{/}" />
 
 // JS util
 function getContextPathWithSlash(){
@@ -9,10 +9,10 @@ function getContextPathWithSlash(){
 	let ctxPath = $('meta[name="ctxPath"]').attr("content");
 	
 	if(!ctxPath){
-		return '/';
+	    return '/';
 	}
 	
-	return ctxPath + '/';
+	return ctxPath;
 }
 ```
 ## Adding context path to all Ajax call
