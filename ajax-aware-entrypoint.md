@@ -41,3 +41,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 }
 ```
+
+**See: [Spring security + Ajax session timeout issue](https://stackoverflow.com/questions/23901950/spring-security-ajax-session-timeout-issue)**
