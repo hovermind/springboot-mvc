@@ -37,5 +37,6 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 }
 
 ```
+**See: [Security Config Example](https://github.com/hovermind/springboot-webmvc/blob/master/security-config.md)**
 
 ## 5. Create [authentication handlers](https://github.com/hovermind/springboot-webmvc/blob/master/security_authentication_handler.md) if needed
