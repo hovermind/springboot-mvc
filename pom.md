@@ -136,7 +136,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>co.jp.softbank.ManagementConsoleApplication</mainClass>
+							<mainClass>...</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>jar-with-dependencies</descriptorRefs>
