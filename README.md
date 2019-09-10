@@ -3,7 +3,7 @@
 ## Generate Project
 Go to: [start.spring.io](http://start.spring.io/) and Generate Project
 
-## [pom.xml](/blob/master/pom.md)
+## [pom.xml](https://github.com/hovermind/springboot-mvc/blob/master/pom.md)
 
 ## Application Class
 ```
