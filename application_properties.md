@@ -26,7 +26,7 @@ server.error.whitelabel.enabled= false
 spring.profiles.active= dev
 
 # logging
-myprefix.log.folder= C:/management_console_log
+myprefix.log.folder= C:/console_log
 #logging.level.root= warn
 logging.level.org.springframework= error
 logging.level.com.hovermind= debug
